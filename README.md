@@ -26,6 +26,7 @@ the Python version of the Odoo.sh stage you are building for.
 | Tag     | Python (Odoo.sh stage) | Odoo version |
 |---------|-------------------------|--------------|
 | `python_3.12` | 3.12              | Odoo 18      |
+| `python_3.14` | 3.14              | Odoo 20      |
 
 ## Use it in a project
 
@@ -34,6 +35,7 @@ Add the line matching your stage's Python version to the `requirements.txt` at t
 
 ```
 runpack @ git+https://github.com/FSDinvest/runpack.git@python_3.12   # Python 3.12
+runpack @ git+https://github.com/FSDinvest/runpack.git@python_3.14   # Python 3.14
 ```
 
 Pin a tag so the runtime only changes when you decide. The build must be able to read this repository
@@ -50,7 +52,7 @@ own binary from the interpreter that runs it, and pulls in `pyarmor.cli.core.lin
 `.so` on first use):
 
 ```bash
-# use the Python interpreter matching the target tag above, e.g. a 3.12 install for python_3.12
+# use the Python interpreter matching the target tag above, e.g. a 3.14 install for python_3.14
 python -m pyarmor.cli gen -r -O dist/<module> --platform linux.x86_64 \
     --use-runtime /path/to/runpack <module_source>
 ```
@@ -60,7 +62,7 @@ python -m pyarmor.cli gen -r -O dist/<module> --platform linux.x86_64 \
 
 The `.pyarmor.ikey` is **not** in this repository. It is the build key that pairs with the runtime of each
 tag: it is only used when obfuscating, never at run time, and it is never installed on Odoo.sh. Keep one
-copy per tag in the internal source repositories (one folder per tag, e.g. `python_3.12/`) and never in
+copy per tag in the internal source repositories (one folder per tag, e.g. `python_3.12/` and `python_3.14/`; each tag has its own key) and never in
 a repository delivered to a customer. Without the key of a tag, new modules cannot be built against that
 tag. Regenerating the runtime creates a new runtime and a new key, which means a new tag and rebuilding
 all the modules.
