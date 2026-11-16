@@ -1,0 +1,13 @@
+__pycache__/
+*.egg-info/
+build/
+dist/
+
+# Build key matching the runtime: keep it private, never commit
+.pyarmor.ikey
+# Local backup of the build keys (one per Python version): never commit
+.keys/
+# PyArmor registration / license material: never commit
+pyarmor-regfile-*.zip
+pyarmor.rkey
+*.lic

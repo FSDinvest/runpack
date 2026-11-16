@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "runpack"
+version = "0.1.0"
+description = "PyArmor Pro runtime (id 015668, linux x86_64, Python 3.12) for FSDI obfuscated Odoo modules."
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[tool.setuptools]
+packages = ["pyarmor_runtime_015668"]
+
+[tool.setuptools.package-data]
+pyarmor_runtime_015668 = ["*.so"]
